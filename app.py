@@ -41,6 +41,7 @@ def store_data():
         with open('incoming.txt', 'a') as f:
             f.write(str(data))
             f.write('\n')
+            f.write('\n')
         return 'Form data stored successfully!'
     else:
         return 'Unsupported media type - must be application/x-www-form-urlencoded'
