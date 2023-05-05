@@ -42,8 +42,8 @@ def store_data():
                 f.write(str(data))
                 f.write('\n')
             return 'Form data stored successfully!'
-        else:
-            return 'Unsupported media type - must be application/x-www-form-urlencoded'
+    else:
+        return 'Unsupported media type - must be application/x-www-form-urlencoded'
 
 if __name__ == '__main__':
     #app.run(debug=True)
