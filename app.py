@@ -42,7 +42,11 @@ def store_data():
             f.write(str(data))
             f.write('\n')
             f.write('\n')
-        print('Form data stored successfully!')
+        # Here we can parse the incoming information and create variables such as "sender's phone number", conversation, etc
+        # Based off the incoming number + the registration information in this app, it will determine whose Square API will be called
+        ## Registration information will have to map <user phone number> to <user square api account>
+        ## This function will do a lookup in the above mapping to determine where to send sq api reqs
+        ## SQLite here or just a text/csv file for now?
         return 'Form data stored successfully!'
     else:
         print('Unsupported media type - must be application/x-www-form-urlencoded')
