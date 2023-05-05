@@ -33,6 +33,14 @@ def entry():
 
     return render_template('entry.html')
 
+@app.route('/incoming', methods=['POST'])
+def store_data():
+    data = request.json
+    with open('incoming.json', 'a') as f:
+        f.write(str(data))
+        f.write('\n')
+    return 'Data stored successfully!'
+
 if __name__ == '__main__':
     #app.run(debug=True)
     app.run(host='0.0.0.0',port=5678)
