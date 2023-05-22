@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, render_template, request, url_for, flash, redirect
 from configs import secret_key
 from messages import messages
+import utils
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secret_key
 
 messages = messages
+users = {}
 
 # Test route
 @app.route('/api/hello')
@@ -17,21 +19,16 @@ def home():
     return render_template('index.html', messages=messages)
 
 
-@app.route('/entry/', methods=('GET', 'POST'))
-def entry():
+@app.route('/new_user/', methods=('GET', 'POST'))
+def new_user():
     if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
+        name = request.form['name']
+        phone = request.form['phone']
+        email = request.form['email']
 
-        if not title:
-            flash('Title is required!')
-        elif not content:
-            flash('Content is required!')
-        else:
-            messages.append({'title': title, 'content': content})
-            return redirect(url_for('home'))
+        utils.create_user(name, phone, email)
 
-    return render_template('entry.html')
+    return render_template('new_user.html')
 
 @app.route('/incoming', methods=['POST'])
 def store_data():
