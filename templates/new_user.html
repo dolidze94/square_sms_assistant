@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Add a New Message {% endblock %}</h1>
+    <form method="post">
+        <label for="name">Name</label>
+        <br>
+        <input type="text" name="name"
+               placeholder="Full name"
+               value="{{ request.form['name'] }}" required></input>
+        <br>
+        <input type="number" name="phone"
+               placeholder="10 digits, including country code"
+               value="{{ request.form['phone'] }}" required></input>
+        <br>
+        <input type="email" name="email"
+               placeholder="Valid email"
+               value="{{ request.form['email'] }}" required></input>
+        <br>
+
+    </form>
+{% endblock %}
