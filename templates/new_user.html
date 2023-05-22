@@ -9,7 +9,7 @@
                placeholder="Full name"
                value="{{ request.form['name'] }}" required></input>
         <br>
-        <input type="number" name="phone"
+        <input type="text" name="phone"
                placeholder="10 digits, including country code"
                value="{{ request.form['phone'] }}" required></input>
         <br>
@@ -17,6 +17,6 @@
                placeholder="Valid email"
                value="{{ request.form['email'] }}" required></input>
         <br>
-
+        <button type="submit">Submit</button>
     </form>
 {% endblock %}
