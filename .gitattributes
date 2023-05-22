@@ -1,1 +1,2 @@
 configs.py filter=git-crypt diff=git-crypt
+database.json filter=git-crypt diff=git-crypt
