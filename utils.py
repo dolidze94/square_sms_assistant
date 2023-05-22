@@ -5,7 +5,7 @@ def create_user(name, phone_number, email):
     # New user in the app
     # Users are ID'd by phone number
 
-    user_data = json_utils.load_data()
+    user_data = get_users()
 
     for user, data in user_data.items():
         if user == phone_number:
@@ -20,6 +20,14 @@ def create_user(name, phone_number, email):
 
     json_utils.save_data(user_data)
     return user_data
+
+def get_users():
+    try:
+        user_data = json_utils.load_data()
+        return user_data
+    except:
+        return "Error in fetching user data"
+
 
 def create_customer(name, phone_number, email):
     # Square customer creation

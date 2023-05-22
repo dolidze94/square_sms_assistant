@@ -3,7 +3,7 @@
 {% block content %}
     <h1>{% block title %} Create new SMS Assistant user {% endblock %}</h1>
     <form method="post">
-        <label for="name">Name</label>
+        <label>New SMS Assistant Account</label>
         <br>
         <input type="text" name="name"
                placeholder="Full name"
@@ -16,6 +16,15 @@
         <input type="email" name="email"
                placeholder="Valid email"
                value="{{ request.form['email'] }}" required></input>
+        <br>
+        <label>Your Square Account Information</label>
+        <input type="text" name="sq_username"
+        placeholder="Square Email"
+        value="{{ request.form['sq_username'] }}" required></input>
+        <br>
+        <input type="password" name="sq_password"
+        placeholder="Square Password"
+        value="{{ request.form['sq_password'] }}" required></input>
         <br>
         <button type="submit">Submit</button>
     </form>
