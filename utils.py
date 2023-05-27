@@ -1,4 +1,4 @@
-import json_utils
+import utils_json
 
 # App administration
 def create_user(name, phone_number, email):
@@ -18,12 +18,12 @@ def create_user(name, phone_number, email):
         'email': email
     }
 
-    json_utils.save_data(user_data)
+    utils_json.save_data(user_data)
     return user_data
 
 def get_users():
     try:
-        user_data = json_utils.load_data()
+        user_data = utils_json.load_data()
         return user_data
     except:
         return "Error in fetching user data"
