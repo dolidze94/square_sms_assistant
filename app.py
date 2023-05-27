@@ -3,6 +3,8 @@ from configs import secret_key
 from messages import messages
 import utils
 import sys
+#Debug
+import traceback
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secret_key
@@ -45,7 +47,8 @@ def incoming():
                 f.write('\n')
             return "Successfully processed incoming text: " + incoming_result
         except Exception as e:
-            print('Unable to process incoming result. Error:\n %s' % str(e), file=sys.stderr)
+            tb = traceback.print_exception(e)#debug
+            print('Unable to process incoming result. Error:\n %s' % str(e), file=sys.stderr)#debug
             return "Error encountered when processing incoming data: " + str(e)
 
     else:
