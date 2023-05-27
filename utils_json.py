@@ -39,6 +39,7 @@ def add_user_incoming_history(incoming):
     if user_exists(incoming):
         incoming_user = incoming['From']
         database = load_data()
+        print('database after retrieving: %s' % database, file=sys.stderr)
         for cust_id, cust_data in database:
             print('incoming user: %s' % incoming_user, file=sys.stderr)
             if incoming_user == cust_id:
