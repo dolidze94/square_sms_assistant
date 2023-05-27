@@ -44,7 +44,7 @@ def incoming():
                 f.write('\n')
             return "Successfully processed incoming text: " + incoming_result
         except Exception as e:
-            return "Error encountered when processing incoming data: " + e
+            return "Error encountered when processing incoming data: " + str(e)
 
     else:
         print('Unsupported media type - must be application/x-www-form-urlencoded')

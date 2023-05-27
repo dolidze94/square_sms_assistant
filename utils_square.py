@@ -8,7 +8,7 @@ def list_customers():
         result = client.customers.list_customers()
         return result
     except Exception as e:
-        return "Error while trying to retrieve customer data: " + e
+        return "Error while trying to retrieve customer data: " + str(e)
     
 def add_customer():
     customer = []
