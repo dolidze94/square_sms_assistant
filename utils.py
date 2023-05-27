@@ -38,3 +38,6 @@ def list_customers():
     # List square customers
     return
 
+def incoming_processor(data):
+    incoming_body = data['Body']
+    incoming_from = data['From']

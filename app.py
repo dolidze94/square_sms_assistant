@@ -31,20 +31,21 @@ def new_user():
     return render_template('new_user.html')
 
 @app.route('/incoming', methods=['POST'])
-def store_data():
+def incoming():
     if request.headers['Content-Type'] == 'application/x-www-form-urlencoded':
         # Handle form data
         data = dict(request.form)
-        with open('incoming.txt', 'a') as f:
-            f.write(str(data))
-            f.write('\n')
-            f.write('\n')
-        # Here we can parse the incoming information and create variables such as "sender's phone number", conversation, etc
-        # Based off the incoming number + the registration information in this app, it will determine whose Square API will be called
-        ## Registration information will have to map <user phone number> to <user square api account>
-        ## This function will do a lookup in the above mapping to determine where to send sq api reqs
-        ## SQLite here or just a text/csv file for now?
-        return 'Form data stored successfully!'
+        try:
+            incoming_result = utils.incoming_processor(data)
+            with open('incoming.txt', 'a') as f:
+                f.write(str(data))
+                f.write(str(incoming_result))
+                f.write('\n')
+                f.write('\n')
+            return "Successfully processed incoming text: " + incoming_result
+        except Exception as e:
+            return "Error encountered when processing incoming data: " + e
+
     else:
         print('Unsupported media type - must be application/x-www-form-urlencoded')
         return 'Unsupported media type - must be application/x-www-form-urlencoded'
