@@ -2,6 +2,7 @@ from flask import Flask, jsonify, render_template, request, url_for, flash, redi
 from configs import secret_key
 from messages import messages
 import utils
+import sys
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secret_key
@@ -44,6 +45,7 @@ def incoming():
                 f.write('\n')
             return "Successfully processed incoming text: " + incoming_result
         except Exception as e:
+            print('Unable to process incoming result. Error:\n %s' % str(e), file=sys.stderr)
             return "Error encountered when processing incoming data: " + str(e)
 
     else:
@@ -51,5 +53,5 @@ def incoming():
         return 'Unsupported media type - must be application/x-www-form-urlencoded'
 
 if __name__ == '__main__':
-    #app.run(debug=True)
-    app.run(host='0.0.0.0',port=5000)
+    app.run(debug=True,host='0.0.0.0',port=5000)
+    #app.run(host='0.0.0.0',port=5000)
