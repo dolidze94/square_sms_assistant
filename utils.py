@@ -41,3 +41,4 @@ def list_customers():
 def incoming_processor(data):
     incoming_body = data['Body']
     incoming_from = data['From']
+    utils_json.add_user_incoming_history(data)
