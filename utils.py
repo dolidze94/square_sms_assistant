@@ -79,8 +79,11 @@ def incoming_processor(data):
                 phone_number = incoming_text_list[4]
                 email = incoming_text_list[5]
                 type = incoming_obj
-                utils_square.create_person(type, full_name, phone_number, email)
-                response = 'Record for %s (%s) has been created' % (full_name, type)
+                new_person = utils_square.create_person(type, full_name, phone_number, email)
+                if new_person:
+                    response = 'Record for %s (%s) has been created' % (full_name, type)
+                else:
+                    response = 'Record creation did not succeed'
         elif incoming_obj in square_objects_dict.keys():
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
