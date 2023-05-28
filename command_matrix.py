@@ -12,7 +12,7 @@ subs_add = ''
 
 # Example: result = client.customers.list_customers()
 square_objects_dict = {
-    "customer": {
+    "customers": {
         "actions": {
             "add": "",
             "assist": "",
