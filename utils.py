@@ -64,7 +64,7 @@ def incoming_processor(data):
         if 'hello' in command:
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "assist" at any time to see how I can help you today.'
         elif 'assist' in command:
-            response = "Available commands:\n- %s\n\nSpecify which information you'd like to see:\n- %s\nExample: 'List customers'" % (available_commands, available_objs)
+            response = "Available commands:\n- %s\n\nSpecify which information you'd like to see:\n- %s\n\nExample: 'List customers'" % (available_commands, available_objs)
         else:
             response = "Sorry, I don't understand what you mean."
     else:
