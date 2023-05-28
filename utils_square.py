@@ -8,9 +8,9 @@ def list_customers():
         result = client.customers.list_customers(limit = 10, sort_field = "CREATED_AT", sort_order = "DESC")
         cust_list = 'Customers not found'
         if result.body['customers']:
-            cust_list = 'Your customers:\n'
+            cust_list = 'Your customers:\n\n'
             for cust in result.body['customers']:
-                cust_list += 'Name: %s\nPhone number: %s' % (cust['given_name'], cust['phone_number'])
+                cust_list += 'Name: %s\nPhone number: %s\n\n' % (cust['given_name'], cust['phone_number'])
         return cust_list
     except Exception as e:
         return "Error while trying to retrieve customer data: " + str(e)
