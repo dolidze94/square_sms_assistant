@@ -57,10 +57,23 @@ def incoming_processor(data):
 
     # Break out incoming text into the supposed parts
     incoming_text_list = incoming_text.split(' ')
-    command = incoming_text_list[0]
+    command = incoming_text_list[0].lower()
 
     if command in commands:
-        response = "That's a correct command"
+        available_commands = ''
+        available_objs = ''
+        for item in commands:
+            available_commands += '- %s\n' % item
+        for obj in square_objects:
+            available_objs += '- %s\n' % obj
+        # Logic to parse the first part of the incoming text (ie the command)
+        if 'hello' in command:
+            response = 'Hello! This is your Square SMS Assistant\nReply "help" to see how I can help you today'
+        elif 'help' in command:
+            response = 'Available commands:\n%s\n\n \
+            You may use the above commands paired with the below Square merchant items:\n%s \
+            Example:\n List customers'
+            % available_commands, available_objs
     else:
         response = 'Sorry, I do not know the command "%s"' % command
 
@@ -69,5 +82,3 @@ def incoming_processor(data):
     # Send response
     utils_twilio.send_sms(user, response)
     return response
-
-
