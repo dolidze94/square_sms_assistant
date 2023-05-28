@@ -26,9 +26,10 @@ def add_user_incoming_history(incoming):
         indexed_history_dict = {}
         incoming_user = incoming['From']
         database = load_data()
-        if "incoming_history" not in cust_data:
-            cust_data["incoming_history"] = []
+
         for cust_id, cust_data in database.items():
+            if "incoming_history" not in cust_data:
+                cust_data["incoming_history"] = []
             if incoming_user == cust_id:
                 entry_tuple = (len(cust_data["incoming_history"]), str(incoming)) # Indexed tuple
                 cust_data["incoming_history"].append(entry_tuple)
