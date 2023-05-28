@@ -6,7 +6,10 @@ client = Client(access_token=configs.square_access_token, environment='sandbox')
 def list_customers():
     try:
         result = client.customers.list_customers(limit = 10, sort_field = "CREATED_AT", sort_order = "DESC")
-        return result
+        cust_list = ''
+        for cust in result.body['customer']:
+            cust_list += 'Name: %s\nPhone number: %s' % (cust['given_name'], cust['phone_number'])
+        return cust_list
     except Exception as e:
         return "Error while trying to retrieve customer data: " + str(e)
 
