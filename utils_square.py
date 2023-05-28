@@ -1,5 +1,6 @@
 from square.client import Client
 import configs
+import sys
 
 client = Client(access_token=configs.square_access_token, environment='sandbox')
 
@@ -34,6 +35,7 @@ def create_person(type, name, phone_number, email):
             result = client.customers.create_customer(body=body)
         if 'employee' in type:
             result = client.team.create_team_member(body={"team_member": body})
+        print('>>> Result from create_person:\n'+result, file=sys.stderr)
         return result
     except Exception as e:
         return "Error hen trying to create person:\n" + e

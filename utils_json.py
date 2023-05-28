@@ -14,7 +14,7 @@ def save_data(data, file_path = database_file):
 
 def user_exists(incoming):
     database = load_data()
-    print('database after retrieving: %s' % database, file=sys.stderr)
+    #print('database after retrieving: %s' % database, file=sys.stderr)
     for cust_id, cust_data in database.items():
         if incoming['From'] == cust_id:
             return True
