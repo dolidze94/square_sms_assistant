@@ -68,7 +68,7 @@ def incoming_processor(data):
         if 'hello' in incoming_action:
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "assist" at any time to see how I can help you today.'
         elif 'assist' in incoming_action:
-            response = "Available functions:\n- %s\n\nSpecify which information you'd like to see:\n- %s\n\nExample: 'List customers'" % (available_actions, available_objs)
+            response = "Available functions (Prototype Mode):\nList customers\nList employees"
         elif incoming_obj in square_objects_dict.keys():
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
