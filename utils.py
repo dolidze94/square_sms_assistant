@@ -46,21 +46,25 @@ def incoming_processor(data):
     # <command> = add, list, show, etc
     # <square_object> = customer, subscription, etc
     
-    commands = ['add', 'list', 'show', 'assist', 'hello']
-    square_objects = ['customer', 'subscription']
+    commands = {
+        'add':{'api_info':''}, 'list':{'api_info':''}, 'show':{'api_info':''}, 'assist':{'api_info':''}, 'hello':{'api_info':''}
+        }
+    square_objects = {
+        'customer':{'api_info':''}, 'subscription':{'api_info':''}
+        }
 
     # Break out incoming text into the supposed parts
     incoming_text_list = incoming_text.split(' ')
     command = incoming_text_list[0].lower()
 
     if command in commands:
-        available_commands = ', '.join(commands)
-        available_objs = ', '.join(square_objects)
+        available_commands = ', '.join(commands.keys())
+        available_objs = ', '.join(square_objects.keys())
         # Logic to parse the first part of the incoming text (ie the command)
         if 'hello' in command:
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "assist" at any time to see how I can help you today.'
         elif 'assist' in command:
-            response = "Available commands:\n- %s\n\nYou may use the above commands paired with the below Square merchant information:\n%s\nExample: 'List customers'" % (available_commands, available_objs)
+            response = "Available commands:\n- %s\n\nSpecify which information you'd like to see:\n- %s\nExample: 'List customers'" % (available_commands, available_objs)
         else:
             response = "Sorry, I don't understand what you mean."
     else:
