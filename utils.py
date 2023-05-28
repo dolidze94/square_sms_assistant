@@ -75,10 +75,12 @@ def incoming_processor(data):
                 # add customer Luke Sky +15555555555 luke@sky.com'
                 first_name = incoming_text_list[2]
                 last_name = incoming_text_list[3]
+                full_name = first_name+' '+last_name
                 phone_number = incoming_text_list[4]
                 email = incoming_text_list[5]
                 type = incoming_obj
-                utils_square.create_person(type, first_name+' '+last_name, phone_number, email)
+                utils_square.create_person(type, full_name, phone_number, email)
+                response = 'Record for %s (%s) has been created' % (full_name, type)
         elif incoming_obj in square_objects_dict.keys():
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
