@@ -28,7 +28,9 @@ def add_user_incoming_history(incoming):
         database = load_data()
         for cust_id, cust_data in database.items():
             if incoming_user == cust_id:
-                cust_data["incoming_history"] = {len(cust_data["incoming_history"]): incoming}
+                cust_data["incoming_history"].append(
+                    (len(cust_data["incoming_history"]), incoming) # Indexed tuple
+                    )
                 save_data(database)
         return True
     else:
