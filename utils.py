@@ -3,6 +3,7 @@ import utils_twilio
 import re
 import command_matrix
 import sys
+import utils_square
 
 # App administration
 def create_user(name, phone_number, email):
@@ -69,6 +70,15 @@ def incoming_processor(data):
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "assist" at any time to see how I can help you today.'
         elif 'assist' in incoming_action:
             response = "Available functions (Prototype Mode):\n> List customers\n> List employees"
+        elif 'add' in incoming_action:
+            if 'customer' in incoming_obj or 'employee' in incoming_obj:
+                # add customer Luke Sky +15555555555 luke@sky.com'
+                first_name = incoming_text_list[2]
+                last_name = incoming_text_list[3]
+                phone_number = incoming_text_list[4]
+                email = incoming_text_list[5]
+                type = incoming_obj
+                utils_square.create_person(type, first_name+' '+last_name, phone_number, email)
         elif incoming_obj in square_objects_dict.keys():
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
