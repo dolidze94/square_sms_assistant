@@ -13,3 +13,12 @@ def list_customers():
 def add_customer():
     customer = []
     return customer
+
+def create_customer(name, phone_number, email):
+    # Square customer creation
+    customer_data = {}
+    return customer_data
+
+def list_customers():
+    # List square customers
+    return

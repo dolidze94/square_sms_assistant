@@ -1,4 +1,6 @@
 import utils_json
+import utils_twilio
+import re
 
 # App administration
 def create_user(name, phone_number, email):
@@ -15,7 +17,8 @@ def create_user(name, phone_number, email):
 
     user_data[phone_number] = {
         'name': name,
-        'email': email
+        'email': email,
+        'incoming_history': {}
     }
 
     utils_json.save_data(user_data)
@@ -28,17 +31,43 @@ def get_users():
     except:
         return "Error in fetching user data"
 
+def phone_num_formatter(phone_num):
+    phone_num = re.sub("[^0-9]", "", phone_num)
+    phone_num = '+' + str(phone_num)
+    return phone_num
 
-def create_customer(name, phone_number, email):
-    # Square customer creation
-    customer_data = {}
-    return customer_data
+def incoming_parser(user):
+    
 
-def list_customers():
-    # List square customers
     return
 
+
 def incoming_processor(data):
-    incoming_body = data['Body']
-    incoming_from = data['From']
+    incoming_text = data['Body'].lower()
+    user = phone_num_formatter(data['From'])
     utils_json.add_user_incoming_history(data)
+    
+    # Structure for the incoming command:
+    # <command> <square_object> <arguments>
+    # <command> = add, list, show, etc
+    # <square_object> = customer, subscription, etc
+    
+    commands = ['add', 'list', 'show', 'help', 'hello']
+    square_objects = ['customer', 'subscription']
+
+    # Break out incoming text into the supposed parts
+    incoming_text_list = incoming_text.split(' ')
+    command = incoming_text_list[0]
+
+    if command in commands:
+        response = "That's a correct command"
+    else:
+        response = 'Sorry, I do not know the command "%s"' % command
+
+    # Based on the command, determine what kind of API call will be made
+
+    # Send response
+    utils_twilio.send_sms(user, response)
+    return response
+
+
