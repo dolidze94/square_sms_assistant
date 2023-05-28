@@ -2,6 +2,7 @@ import utils_json
 import utils_twilio
 import re
 import command_matrix
+import sys
 
 # App administration
 def create_user(name, phone_number, email):
@@ -57,6 +58,7 @@ def incoming_processor(data):
 
 
     if incoming_action in actions:
+        print('>>> Incoming action:\n%s' % incoming_action, file=sys.stderr)
         available_actions = ', '.join(actions)
         available_objs = ', '.join(square_objects_dict.keys())
         # Logic to parse the first part of the incoming text (ie the command)
