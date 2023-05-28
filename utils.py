@@ -80,8 +80,9 @@ def incoming_processor(data):
                 email = incoming_text_list[5]
                 type = incoming_obj
                 new_person = utils_square.create_person(type, full_name, phone_number, email)
+                print('new_person:\n'+str(new_person), file=sys.stderr)
                 if new_person:
-                    response = 'Record for %s (%s) has been created' % (full_name, type)
+                    response = 'Record for %s (%s) has been created' % (new_person['Body']['given_name'], type)
                 else:
                     response = 'Record creation did not succeed'
         elif incoming_obj in square_objects_dict.keys():
