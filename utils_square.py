@@ -29,7 +29,7 @@ def create_person(type, name, phone_number, email):
         body = {
             "given_name": name,
             "phone_number": phone_number,
-            "email": email
+            "email_address": email
         }
         if 'customer' in type:
             result = client.customers.create_customer(body=body)
