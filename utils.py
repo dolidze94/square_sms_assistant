@@ -70,8 +70,8 @@ def incoming_processor(data):
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
                 result = eval(square_command)
-            except:
-                response = "That action is unavailable"
+            except Exception as e:
+                response = "That action is unavailable. Error:\n", e
         else:
             response = "Sorry, I don't understand what you mean."
     else:
