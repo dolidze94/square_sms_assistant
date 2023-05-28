@@ -35,9 +35,9 @@ def create_person(type, name, phone_number, email):
             result = client.customers.create_customer(body=body)
         if 'employee' in type:
             result = client.team.create_team_member(body={"team_member": body})
-        print('>>> Result from create_person:\n'+result, file=sys.stderr)
+        print('>>> Result from create_person:\n'+str(result.body), file=sys.stderr)
         return result
     except Exception as e:
-        print("Error hen trying to create person:\n", str(e))
+        print("Error when trying to create person:\n", str(e))
         return False
 
