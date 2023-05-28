@@ -33,4 +33,5 @@ def create_person(type, name, phone_number, email):
         result = client.customers.create_customer(body=body)
     if 'employee' in type:
         result = client.team.create_team_member(body={"team_member": body})
+    return result
 
