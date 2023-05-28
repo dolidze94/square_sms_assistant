@@ -46,7 +46,7 @@ def incoming_processor(data):
     # <command> = add, list, show, etc
     # <square_object> = customer, subscription, etc
     
-    commands = ['add', 'list', 'show', 'commands', 'hello']
+    commands = ['add', 'list', 'show', 'a', 'hello']
     square_objects = ['customer', 'subscription']
 
     # Break out incoming text into the supposed parts
@@ -54,8 +54,8 @@ def incoming_processor(data):
     command = incoming_text_list[0].lower()
 
     if command in commands:
-        available_commands = commands.join(', ')
-        available_objs = square_objects.join(', ')
+        available_commands = ', '.join(commands)
+        available_objs = ', '.join(square_objects)
         # Logic to parse the first part of the incoming text (ie the command)
         if 'hello' in command:
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "commands" to see how I can help you today.'
