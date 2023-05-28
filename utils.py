@@ -53,7 +53,7 @@ def incoming_processor(data):
 
     # Break out incoming text into the supposed parts
     incoming_text_list = incoming_text.split(' ')
-    for i in range(len(incoming_text_list)-1):
+    for i in range(len(incoming_text_list)):
         if i == 0:
             incoming_action = incoming_text_list[i].lower()
         if i==1:
