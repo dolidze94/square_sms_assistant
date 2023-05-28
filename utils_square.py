@@ -8,7 +8,8 @@ def list_customers():
         result = client.customers.list_customers(limit = 2, sort_field = "CREATED_AT", sort_order = "DESC")
         cust_list = 'Customers not found'
         if result.body['customers']:
-            cust_list = 'Your customers:\n\n'
+            #cust_list = 'Your customers:\n\n'
+            cust_list = 'hello:\n\n'
             for cust in result.body['customers']:
                 #cust_list += 'Name: %s\nPhone number: %s\n\n' % (cust['given_name'], cust['phone_number'])
                 cust_list += 'Name: %s\nOther string: %s\n\n' % (cust['given_name'], 'not number')
