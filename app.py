@@ -45,7 +45,6 @@ def incoming():
                 #f.write(str(incoming_result))
                 #f.write('\n')
                 #f.write('\n')
-            
             return 
         except Exception as e:
             tb = traceback.print_exception(e)#debug
