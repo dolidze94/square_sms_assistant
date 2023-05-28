@@ -38,5 +38,5 @@ def create_person(type, name, phone_number, email):
         print('>>> Result from create_person:\n'+result, file=sys.stderr)
         return result
     except Exception as e:
-        return "Error hen trying to create person:\n" + e
+        return "Error hen trying to create person:\n" , str(e)
 

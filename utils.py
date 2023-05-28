@@ -90,7 +90,7 @@ def incoming_processor(data):
                 response = square_command
                 print('>>> Response:\n%s' % response, file=sys.stderr)
             except Exception as e:
-                response = "That action is unavailable. Error:\n", e
+                response = "That action is unavailable. Error:\n", str(e)
         else:
             response = "Sorry, I don't understand what you mean."
     else:
