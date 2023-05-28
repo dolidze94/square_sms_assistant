@@ -5,7 +5,7 @@ client = Client(access_token=configs.square_access_token, environment='sandbox')
 
 def list_customers():
     try:
-        result = client.customers.list_customers(limit = 10, sort_field = "CREATED_AT", sort_order = "DESC")
+        result = client.customers.list_customers(limit = 10, sort_field = "CREATED_AT", sort_order = "DESC", limit = 2)
         cust_list = 'Customers not found'
         if result.body['customers']:
             cust_list = 'Your customers:\n\n'
