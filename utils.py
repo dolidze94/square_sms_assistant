@@ -36,12 +36,6 @@ def phone_num_formatter(phone_num):
     phone_num = '+' + str(phone_num)
     return phone_num
 
-def incoming_parser(user):
-    
-
-    return
-
-
 def incoming_processor(data):
     incoming_text = data['Body'].lower()
     user = phone_num_formatter(data['From'])
@@ -52,7 +46,7 @@ def incoming_processor(data):
     # <command> = add, list, show, etc
     # <square_object> = customer, subscription, etc
     
-    commands = ['add', 'list', 'show', 'command', 'hello']
+    commands = ['add', 'list', 'show', 'commands', 'hello']
     square_objects = ['customer', 'subscription']
 
     # Break out incoming text into the supposed parts
@@ -68,12 +62,14 @@ def incoming_processor(data):
             available_objs += '- %s\n' % obj
         # Logic to parse the first part of the incoming text (ie the command)
         if 'hello' in command:
-            response = 'Hello! This is your Square SMS Assistant\nReply "help" to see how I can help you today'
-        elif 'command' in command:
+            response = 'Hello! This is your Square SMS Assistant.\n\nReply "commands" to see how I can help you today.'
+        elif 'commands' in command:
             response = 'Available commands:\n%s\n\n \
-            You may use the above commands paired with the below Square merchant items:\n%s \
+            You may use the above commands paired with the below Square merchant information:\n%s \
             Example:\n List customers' \
             % available_commands, available_objs
+        else:
+            response = "Sorry, I don't understand what you mean."
     else:
         response = 'Sorry, I do not know the command "%s"' % command
 
