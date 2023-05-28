@@ -70,7 +70,7 @@ def incoming_processor(data):
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
                 print('>>> Square command:\n%s' % square_command, file=sys.stderr)
-                result = eval(square_command)
+                response = square_command
             except Exception as e:
                 response = "That action is unavailable. Error:\n", e
         else:
