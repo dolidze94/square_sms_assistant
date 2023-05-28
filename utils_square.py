@@ -24,14 +24,17 @@ def list_employees():
 
 def create_person(type, name, phone_number, email):
     # Square customer creation
-    body = {
-        "given_name": name,
-        "phone_number": phone_number,
-        "email": email
-    }
-    if 'customer' in type:
-        result = client.customers.create_customer(body=body)
-    if 'employee' in type:
-        result = client.team.create_team_member(body={"team_member": body})
-    return result
+    try:
+        body = {
+            "given_name": name,
+            "phone_number": phone_number,
+            "email": email
+        }
+        if 'customer' in type:
+            result = client.customers.create_customer(body=body)
+        if 'employee' in type:
+            result = client.team.create_team_member(body={"team_member": body})
+        return result
+    except Exception as e:
+        return "Error hen trying to create person:\n" + e
 
