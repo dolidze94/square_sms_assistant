@@ -83,8 +83,8 @@ def incoming_processor(data):
                 print('new_person:\n'+str(new_person), file=sys.stderr)
                 if new_person:
                     new_record_name = ''
-                    for record_type in new_person.body:
-                        new_record_name = record_type['given_name']
+                    for record_type, record in new_person.body.items():
+                        new_record_name = record['given_name']
                         type = record_type
                     response = 'Record for %s (%s) has been created' % (new_record_name, type)
                 else:
