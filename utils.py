@@ -72,8 +72,8 @@ def incoming_processor(data):
         elif incoming_obj in square_objects_dict.keys():
             try:
                 square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
-                print('>>> Square command:\n%s' % square_command, file=sys.stderr)
                 response = square_command
+                print('>>> Response:\n%s' % response, file=sys.stderr)
             except Exception as e:
                 response = "That action is unavailable. Error:\n", e
         else:
