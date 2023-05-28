@@ -53,8 +53,11 @@ def incoming_processor(data):
 
     # Break out incoming text into the supposed parts
     incoming_text_list = incoming_text.split(' ')
-    incoming_action = incoming_text_list[0].lower()
-    incoming_obj = incoming_text_list[1].lower()
+    for i in range(len(incoming_text_list)-1):
+        if i == 0:
+            incoming_action = incoming_text_list[i].lower()
+        if i==1:
+            incoming_obj = incoming_text_list[i].lower()
 
 
     if incoming_action in actions:
