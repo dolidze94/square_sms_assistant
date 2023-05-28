@@ -26,11 +26,13 @@ def add_user_incoming_history(incoming):
         indexed_history_dict = {}
         incoming_user = incoming['From']
         database = load_data()
+        if not cust_data["incoming_history"]:
+            cust_data["incoming_history"] = []
         for cust_id, cust_data in database.items():
             if incoming_user == cust_id:
                 entry_tuple = (len(cust_data["incoming_history"]), str(incoming)) # Indexed tuple
                 cust_data["incoming_history"].append(entry_tuple)
-                save_data(database)
+        save_data(database)
         return True
     else:
         return "This user does not exist in the records"
