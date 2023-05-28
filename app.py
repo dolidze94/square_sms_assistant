@@ -45,7 +45,7 @@ def incoming():
                 f.write(str(incoming_result))
                 f.write('\n')
                 f.write('\n')
-            return "Successfully processed incoming text: " + incoming_result
+            return "Successfully processed incoming text: " + str(incoming_result)
         except Exception as e:
             tb = traceback.print_exception(e)#debug
             print('Unable to process incoming result. Error:\n %s' % str(e), file=sys.stderr)#debug

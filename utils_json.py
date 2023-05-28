@@ -23,13 +23,12 @@ def user_exists(incoming):
 def add_user_incoming_history(incoming):
     print('add_user_incoming_history executed', file=sys.stderr)
     if user_exists(incoming):
+        indexed_history_dict = {}
         incoming_user = incoming['From']
         database = load_data()
         for cust_id, cust_data in database.items():
             if incoming_user == cust_id:
-                existing_incoming_history = cust_data["incoming_history"]
-                indexed_history_tuple = (len(existing_incoming_history), incoming)
-                existing_incoming_history.append(indexed_history_tuple)
+                cust_data["incoming_history"] = {len(cust_data["incoming_history"]): incoming}
                 save_data(database)
         return True
     else:
@@ -44,8 +43,8 @@ def add_user_incoming_history(incoming):
 #            print('incoming user: %s' % incoming_user, file=sys.stderr)
 #            if incoming_user == cust_id:
 #                existing_incoming_history = cust_data["incoming_history"]
-#                indexed_history_tuple = (len(existing_incoming_history), incoming)
-#                existing_incoming_history.append(indexed_history_tuple)
+#                indexed_history_dict = (len(existing_incoming_history), incoming)
+#                existing_incoming_history.append(indexed_history_dict)
 #                print('database before saving: %s' % database, file=sys.stderr)
 #                save_data(database)
 #        return True
