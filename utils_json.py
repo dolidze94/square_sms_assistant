@@ -23,7 +23,6 @@ def user_exists(incoming):
 def add_user_incoming_history(incoming):
     print('add_user_incoming_history executed', file=sys.stderr)
     if user_exists(incoming):
-        indexed_history_dict = {}
         incoming_user = incoming['From']
         database = load_data()
 
