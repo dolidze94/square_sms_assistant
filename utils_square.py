@@ -2,7 +2,7 @@ from square.client import Client
 import configs
 import sys
 
-client = Client(access_token=configs.square_access_token, environment='sandbox')
+#client = Client(access_token=configs.square_access_token, environment='sandbox')
 
 def list_customers():
     client = Client(access_token=configs.square_access_token, environment='sandbox')
