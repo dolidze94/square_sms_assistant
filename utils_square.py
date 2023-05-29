@@ -36,6 +36,7 @@ def create_person(type, name, phone_number, email):
         if 'customer' in type:
             result = client.customers.create_customer(body=body)
         if 'employee' in type:
+            body['family_name'] = name
             result = client.team.create_team_member(body={"team_member": body})
         print('>>> Result from create_person:\n'+str(result.body), file=sys.stderr)
         return result
