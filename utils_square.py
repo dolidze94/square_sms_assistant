@@ -22,7 +22,12 @@ def list_employees():
     body = {}
     try:
         result = client.team.search_team_members(body=body)
-        return result
+        emp_list = 'Customers not found'
+        if result.body['team_members']:
+            emp_list = 'Here are your employees:\n\n'
+            for emp in result.body['team_members']:
+                emp_list += 'Name: %s\nPhone number: %s\n\n' % (emp['given_name'], emp['phone_number'])
+        return emp_list
     except Exception as e:
         return "Error while trying to retrieve employee data: " + str(e)
 
