@@ -89,13 +89,20 @@ def incoming_processor(data):
                     response = 'Record for %s (%s) has been created' % (new_record_name, type)
                 else:
                     response = 'Record creation did not succeed'
-        elif incoming_obj in square_objects_dict.keys():
-            try:
-                square_command = exec(square_objects_dict[incoming_obj]['actions'][incoming_action])
-                response = square_command
-                print('>>> Response:\n%s' % response, file=sys.stderr)
-            except Exception as e:
-                response = "That action is unavailable. Error:\n", str(e)
+        elif 'list' in incoming_action:
+            if 'customer' in incoming_obj:
+                response = utils_square.list_customers()
+            elif 'employee' in incoming_obj:
+                response = utils_square.list_employees()
+            else:
+                response = 'Unable to find object "%s"' % incoming_obj
+        #elif incoming_obj in square_objects_dict.keys():
+            #try:
+                #square_command = exec(square_objects_dict[incoming_obj]['actions'][incoming_action])
+                #response = square_command
+                #print('>>> Response:\n%s' % response, file=sys.stderr)
+            #except Exception as e:
+                #response = "That action is unavailable. Error:\n", str(e)
         else:
             response = "Sorry, I don't understand what you mean."
     else:
