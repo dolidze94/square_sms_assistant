@@ -1,7 +1,8 @@
-from twilio.rest import Client
+#from twilio.rest import Client
 import configs
 
 def send_sms(sms_to, sms_body):
+    from twilio.rest import Client
     client = Client(configs.twilio_account_sid, configs.twilio_auth_token)
     message = client.messages.create(
         messaging_service_sid=configs.twilio_messaging_service_sid,
