@@ -19,8 +19,9 @@ def list_customers():
         return "Error while trying to retrieve customer data: " + str(e)
 
 def list_employees():
+    body = {}
     try:
-        result = client.team.search_team_members()
+        result = client.team.search_team_members(body=body)
         return result
     except Exception as e:
         return "Error while trying to retrieve employee data: " + str(e)

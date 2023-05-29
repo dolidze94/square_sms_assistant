@@ -89,7 +89,7 @@ def incoming_processor(data):
                         if 'employee' in type:
                             new_record_name = record['given_name']
                         type = record_type
-                    response = 'Record for %s (%s) has been created' % (new_record_name, type)
+                    response = 'Record for %s (%s) has been created' % (new_record_name.replace('_', ' '), type)
                 else:
                     response = 'Record creation did not succeed'
         elif 'list' in incoming_action:
