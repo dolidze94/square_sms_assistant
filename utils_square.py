@@ -26,7 +26,8 @@ def list_employees():
         if result.body['team_members']:
             emp_list = 'Here are your employees:\n\n'
             for emp in result.body['team_members']:
-                emp_list += 'Name: %s\nPhone number: %s\n\n' % (emp['given_name'], emp['phone_number'])
+                if not emp['is_owner']:
+                    emp_list += 'Name: %s\nPhone number: %s\n\n' % (emp['given_name'], emp['phone_number'])
         return emp_list
     except Exception as e:
         print("Error while trying to retrieve employee data: " + str(e), file=sys.stderr)
