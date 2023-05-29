@@ -5,6 +5,7 @@ import sys
 client = Client(access_token=configs.square_access_token, environment='sandbox')
 
 def list_customers():
+    client = Client(access_token=configs.square_access_token, environment='sandbox')
     try:
         result = client.customers.list_customers(limit = 10, sort_field = "CREATED_AT", sort_order = "DESC")
         cust_list = 'Customers not found'
@@ -17,6 +18,7 @@ def list_customers():
         return "Error while trying to retrieve customer data: " + str(e)
 
 def list_employees():
+    client = Client(access_token=configs.square_access_token, environment='sandbox')
     try:
         result = client.team.search_team_members()
         return result
@@ -24,6 +26,7 @@ def list_employees():
         return "Error while trying to retrieve employee data: " + str(e)
 
 def create_person(type, name, phone_number, email):
+    client = Client(access_token=configs.square_access_token, environment='sandbox')
     # Square customer creation
     try:
         body = {
