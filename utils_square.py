@@ -29,7 +29,8 @@ def list_employees():
                 emp_list += 'Name: %s\nPhone number: %s\n\n' % (emp['given_name'], emp['phone_number'])
         return emp_list
     except Exception as e:
-        return "Error while trying to retrieve employee data: " + str(e)
+        print("Error while trying to retrieve employee data: " + str(e), file=sys.stderr)
+        return False
 
 def create_person(type, name, phone_number, email):
     # Square customer creation
