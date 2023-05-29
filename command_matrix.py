@@ -5,7 +5,7 @@ actions = ['add', 'show', 'list', 'assist', 'hello']
 square_objects = ['customer', 'subscription']
 
 # Helper variables
-customer_list = utils_square.list_customers()
+customer_list = 'utils_square.list_customers()'
 customer_add = ''
 emp_list = ''
 subs_add = ''

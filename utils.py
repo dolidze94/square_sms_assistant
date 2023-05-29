@@ -91,7 +91,7 @@ def incoming_processor(data):
                     response = 'Record creation did not succeed'
         elif incoming_obj in square_objects_dict.keys():
             try:
-                square_command = square_objects_dict[incoming_obj]['actions'][incoming_action]
+                square_command = exec(square_objects_dict[incoming_obj]['actions'][incoming_action])
                 response = square_command
                 print('>>> Response:\n%s' % response, file=sys.stderr)
             except Exception as e:
