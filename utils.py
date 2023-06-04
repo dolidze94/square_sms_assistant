@@ -6,6 +6,7 @@ import sys
 import utils_square
 
 # App administration
+# For now the "database" is a json blob (encrypted) because I didn't yet want to create a SQL instance
 def create_user(name, phone_number, email):
     # New user in the app
     # Users are ID'd by phone number

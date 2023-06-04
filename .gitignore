@@ -4,3 +4,5 @@ __pycache__/
 
 # Personal notes, etc
 build_diary.txt
+
+database.json
