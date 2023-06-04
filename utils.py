@@ -70,7 +70,7 @@ def incoming_processor(data):
             response = 'Hello! This is your Square SMS Assistant.\n\nReply "assist" at any time to see how I can help you today.'
         elif 'assist' in incoming_action:
             #response = 'Available functions (Prototype Mode):\n> List and add customers/employees\nFor example, "list employees"\nTo add a record, type add <employee/customer> <first name> <last name> <phone number> <email>\nie.: Add employee James Jameston +14155552671 james@ceo.com'
-            response = 'Available functions (Prototype Mode):\n> List and add customers/employees\nFor example, "list employees"\nTo add a record, type add <employee/customer> <first name> <last name> <phone number> <email>'
+            response = 'Available functions (Prototype Mode):\n> List and add customers/employees\nFor example, "list employees"\nTo add a record, type add <employee/customer> <first name> <last name> <phone number> <email>\nie.: Add employee James Jameston phone_number email'
         elif 'add' in incoming_action:
             if 'customer' in incoming_obj or 'employee' in incoming_obj:
                 # add customer Luke Sky +15555555555 luke@sky.com'
