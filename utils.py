@@ -22,7 +22,7 @@ def create_user(name, phone_number, email):
     user_data[phone_number] = {
         'name': name,
         'email': email,
-        'incoming_history': {}
+        'incoming_history': []
     }
 
     utils_json.save_data(user_data)
