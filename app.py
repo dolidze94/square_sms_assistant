@@ -17,9 +17,20 @@ users = {}
 def hello():
     return jsonify({'message': 'Hello, world!'})
 
-@app.route('/')
-def home():
-    return render_template('index.html', messages=messages)
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    if request.method == 'POST':
+        name = request.form['name']
+        phone = request.form['phone']
+        email = request.form['email']
+
+        utils.create_user(name, phone, email)
+
+        return render_template('new_user.html')
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 @app.route('/new_user/', methods=('GET', 'POST'))
@@ -31,7 +42,7 @@ def new_user():
 
         utils.create_user(name, phone, email)
 
-    return render_template('new_user.html')
+    return render_template('registered.html')
 
 @app.route('/incoming', methods=['POST'])
 def incoming():

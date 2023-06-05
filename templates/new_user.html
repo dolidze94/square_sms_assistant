@@ -10,14 +10,14 @@
                value="{{ request.form['name'] }}" required></input>
         <br>
         <input type="text" name="phone"
-               placeholder="10 digits, including country code"
+               placeholder="Only digits, including country code +19876543210"
                value="{{ request.form['phone'] }}" required></input>
         <br>
         <input type="email" name="email"
                placeholder="Valid email"
                value="{{ request.form['email'] }}" required></input>
         <br>
-        <label>Your Square Account Information</label>
+        <label>Your Square Account Information<br />NOTE: Prototype version only uses the test Square account</label>
         <input type="text" name="sq_username"
         placeholder="Square Email"
         value="{{ request.form['sq_username'] }}" required></input>
