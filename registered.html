@@ -1,0 +1,15 @@
+<!-- registered.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>New User Registered!</h1>
+        {% if user_input %}
+            <p>Your input: {{ user_input }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
