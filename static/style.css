@@ -1,6 +1,11 @@
 /* style.css */
+
+body {
+    background: black;
+}
+
 .container {
-    max-width: 400px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f0f0f0;

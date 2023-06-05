@@ -8,7 +8,7 @@
     <div class="container">
         <h1>Square SMS Assistant</h1>
         <form method="post">
-            <label>New SMS Assistant Account</label>
+            <h2>New SMS Assistant Account</h2>
             <br>
             <input type="text" name="name"
                    placeholder="Full name"
@@ -22,7 +22,9 @@
                    placeholder="Valid email"
                    value="{{ request.form['email'] }}" required></input>
             <br>
-            <label>Your Square Account Information<br />NOTE: Prototype version only uses the test Square account<br /></label>
+            <h2>
+                Your Square Account Information<br />NOTE: Prototype version only uses the test Square account<br />
+            </h2>
             <input type="text" name="sq_username"
             placeholder="Square Email"
             value="{{ request.form['sq_username'] }}" disabled></input>
