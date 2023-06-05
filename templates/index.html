@@ -25,11 +25,11 @@
             <label>Your Square Account Information<br />NOTE: Prototype version only uses the test Square account<br /></label>
             <input type="text" name="sq_username"
             placeholder="Square Email"
-            value="{{ request.form['sq_username'] }}" required></input>
+            value="{{ request.form['sq_username'] }}" disabled></input>
             <br>
             <input type="password" name="sq_password"
             placeholder="Square Password"
-            value="{{ request.form['sq_password'] }}" required></input>
+            value="{{ request.form['sq_password'] }}" disabled></input>
             <br>
             <button type="submit">Submit</button>
         </form>
