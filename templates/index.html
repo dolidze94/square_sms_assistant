@@ -38,7 +38,7 @@
             <br>
             <button type="submit">Submit</button>
         </form>
-        <img src="images/ssa_logo.png" alt="Square SMS Assistant" class="bottom-right">
+        <img src="{{ url_for('static', filename='ssa_logo.png') }}" alt="Square SMS Assistant" class="bottom-right">
         {% if user_input %}
             <p>Your input: {{ user_input }}</p>
         {% endif %}
