@@ -11,6 +11,13 @@ body {
     background-color: #f0f0f0;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 h1 {
@@ -19,7 +26,7 @@ h1 {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 800%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -27,7 +34,7 @@ input[type="text"] {
 }
 
 input[type="email"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -35,7 +42,7 @@ input[type="email"] {
 }
 
 input[type="password"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #ddd;
@@ -43,7 +50,7 @@ input[type="password"] {
 }
 
 button[type="submit"] {
-    width: 100%;
+    width: 80%;
     padding: 10px;
     font-size: 16px;
     background-color: #333;

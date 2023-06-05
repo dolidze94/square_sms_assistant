@@ -11,6 +11,7 @@
             <input type="text" name="user_input" placeholder="Enter your input" required>
             <button type="submit">Submit</button>
         </form>
+        <img src="{{ url_for('images', filename='ssa_logo.png') }}" alt="Image" class="bottom-right">
         {% if user_input %}
             <p>Your input: {{ user_input }}</p>
         {% endif %}
