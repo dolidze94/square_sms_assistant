@@ -26,23 +26,23 @@ def index():
 
         utils.create_user(name, phone, email)
 
-        return render_template('new_user.html')
+        return render_template('registered.html')
     return render_template('index.html')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+#    app.run(debug=True)
 
 
-@app.route('/new_user/', methods=('GET', 'POST'))
-def new_user():
-    if request.method == 'POST':
-        name = request.form['name']
-        phone = request.form['phone']
-        email = request.form['email']
-
-        utils.create_user(name, phone, email)
-
-    return render_template('registered.html')
+#@app.route('/new_user/', methods=('GET', 'POST'))
+#def new_user():
+#    if request.method == 'POST':
+#        name = request.form['name']
+#        phone = request.form['phone']
+#        email = request.form['email']
+#
+#        utils.create_user(name, phone, email)
+#
+#    return render_template('registered.html')
 
 @app.route('/incoming', methods=['POST'])
 def incoming():
